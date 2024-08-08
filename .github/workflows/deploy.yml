@@ -31,15 +31,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          path: "mini-apps"
       - name: Set up Node
         uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "npm"
+          working-directory: "mini-apps"
       - name: Install dependencies
-        working-directory: mini-apps
+        working-directory: "mini-apps"
         run: npm install
       - name: Build
-        working-directory: mini-apps
+        working-directory: "mini-apps"
         run: npm run build
       - name: Setup Pages
+        working-directory: "mini-apps"
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
@@ -49,3 +56,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+        working-directory: "mini-apps"
