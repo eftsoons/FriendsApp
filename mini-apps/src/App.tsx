@@ -1,25 +1,18 @@
 import { useState, useEffect } from "react";
 
-import { initInitData } from "@telegram-apps/sdk";
+//import { initInitData } from "@telegram-apps/sdk";
 
-import {
-  Progress,
-  Tabbar,
-  List,
-  Section,
-  Cell,
-  Input,
-} from "@telegram-apps/telegram-ui";
+import { Tabbar, List, Section, Cell, Input } from "@telegram-apps/telegram-ui";
 import "@telegram-apps/telegram-ui/dist/styles.css";
 
 import Icons, { Icon } from "./componets/icon";
 import lang from "./lang";
 
 export default function App() {
-  const [count, setCount] = useState(0);
+  //const [count, setCount] = useState(0);
   const [page, setpage] = useState("1");
 
-  const initData = initInitData();
+  //const initData = initInitData();
 
   useEffect(() => {}, []);
 
