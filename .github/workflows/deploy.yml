@@ -38,7 +38,7 @@ jobs:
         with:
           node-version: 18
           cache: "npm"
-          path: "./mini-apps"
+          working-directory: "./mini-apps"
       - name: Install dependencies
         working-directory: "./mini-apps"
         run: npm install
