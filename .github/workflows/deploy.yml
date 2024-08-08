@@ -34,10 +34,10 @@ jobs:
         with:
           path: "./mini-apps"
       - name: Install dependencies
-        working-directory: "./mini-apps"
+        working-directory: mini-apps
         run: npm install
       - name: Build
-        working-directory: "./mini-apps"
+        working-directory: mini-apps
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
