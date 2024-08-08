@@ -1,0 +1,18 @@
+{
+  "name": "friendsbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "npx rimraf dist && tsc",
+    "start": "node ./dist/index.js"
+  },
+  "author": "shishkin",
+  "license": "ISC",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.66.0"
+  },
+  "devDependencies": {
+    "@types/node-telegram-bot-api": "^0.64.7"
+  }
+}
