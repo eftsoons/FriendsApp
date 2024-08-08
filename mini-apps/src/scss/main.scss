@@ -4,3 +4,17 @@
   font-family: tgico;
   font-size: 1.5rem;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  scrollbar-width: none;
+}
+
+body {
+  background-color: var(--tg-theme-secondary-bg-color);
+}
+
+img {
+  width: 10rem;
+}

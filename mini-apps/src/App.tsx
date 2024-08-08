@@ -1,8 +1,17 @@
 import { useState, useEffect } from "react";
 
 //import { initInitData } from "@telegram-apps/sdk";
+import { initMiniApp, postEvent } from "@telegram-apps/sdk";
 
-import { Tabbar, List, Section, Cell, Input } from "@telegram-apps/telegram-ui";
+import {
+  Tabbar,
+  List,
+  Section,
+  Cell,
+  Input,
+  Placeholder,
+  Button,
+} from "@telegram-apps/telegram-ui";
 import "@telegram-apps/telegram-ui/dist/styles.css";
 
 import Icons, { Icon } from "./componets/icon";
@@ -11,10 +20,18 @@ import lang from "./lang";
 export default function App() {
   //const [count, setCount] = useState(0);
   const [page, setpage] = useState("1");
+  const [miniApp] = initMiniApp();
+  const [userfriends] = useState([]);
 
   //const initData = initInitData();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    miniApp.ready();
+
+    postEvent("web_app_expand");
+
+    miniApp.setHeaderColor("secondary_bg_color");
+  }, []);
 
   const pagetab = [
     {
@@ -29,20 +46,25 @@ export default function App() {
   return (
     <List>
       {page == "1" ? (
-        <Section footer="Тут типа друзья" header="Друзья">
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-        </Section>
+        userfriends.length > 0 ? (
+          <Section header="Друзья">
+            {userfriends.map(() => (
+              <Cell interactiveAnimation={"opacity"}>Friends</Cell>
+            ))}
+          </Section>
+        ) : (
+          <Placeholder
+            action={
+              <Button onClick={() => setpage("2")} size="l" stretched>
+                Поиск друзей
+              </Button>
+            }
+            description="Для исправления такой плачевной ситуации перейдите в раздел поиска друзей"
+            header="У вас нет друзей!"
+          >
+            <img alt="Telegram sticker" src="https://xelene.me/telegram.gif" />
+          </Placeholder>
+        )
       ) : page == "2" ? (
         <Section footer="Тут типа поиск друзей" header="Поиск друзей">
           <Input
@@ -52,7 +74,7 @@ export default function App() {
           <Cell>Chat Settings</Cell>
         </Section>
       ) : (
-        <Section footer="Тут типа настройки" header="Настройки">
+        <Section>
           <Cell>Settings</Cell>
         </Section>
       )}
