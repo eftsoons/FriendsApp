@@ -56,7 +56,7 @@ export default function App() {
           <Cell interactiveAnimation={"opacity"}>Friends</Cell>
           <Cell interactiveAnimation={"opacity"}>Friends</Cell>
           <Cell interactiveAnimation={"opacity"}>Friends</Cell>
-          <Cell>Friends</Cell>
+          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
         </Section>
       ) : page == "2" ? (
         <Section footer="Тут типа поиск друзей" header="Поиск друзей">
