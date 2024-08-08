@@ -32,7 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Move to npm directory
-        run: ls
+        run: cd mini-apps
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
