@@ -14,7 +14,11 @@ export default function App() {
 
   //const initData = initInitData();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    window.addEventListener("touchmove", (e) => e.preventDefault(), {
+      passive: false,
+    });
+  }, []);
 
   const pagetab = [
     {
