@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 //import { initInitData } from "@telegram-apps/sdk";
+import { initMiniApp, postEvent } from "@telegram-apps/sdk";
 
 import { Tabbar, List, Section, Cell, Input } from "@telegram-apps/telegram-ui";
 import "@telegram-apps/telegram-ui/dist/styles.css";
@@ -11,6 +12,7 @@ import lang from "./lang";
 export default function App() {
   //const [count, setCount] = useState(0);
   const [page, setpage] = useState("1");
+  const [miniApp] = initMiniApp();
 
   //const initData = initInitData();
 
@@ -18,6 +20,12 @@ export default function App() {
     window.addEventListener("touchmove", (e) => e.preventDefault(), {
       passive: false,
     });
+
+    miniApp.ready();
+
+    postEvent("web_app_expand");
+
+    miniApp.setHeaderColor("secondary_bg_color");
   }, []);
 
   const pagetab = [
@@ -33,7 +41,7 @@ export default function App() {
   return (
     <List>
       {page == "1" ? (
-        <Section footer="Тут типа друзья" header="Друзья">
+        <Section header="Друзья">
           <Cell>Friends</Cell>
           <Cell>Friends</Cell>
           <Cell>Friends</Cell>
@@ -56,7 +64,7 @@ export default function App() {
           <Cell>Chat Settings</Cell>
         </Section>
       ) : (
-        <Section footer="Тут типа настройки" header="Настройки">
+        <Section>
           <Cell>Settings</Cell>
         </Section>
       )}
