@@ -3,7 +3,15 @@ import { useState, useEffect } from "react";
 //import { initInitData } from "@telegram-apps/sdk";
 import { initMiniApp, postEvent } from "@telegram-apps/sdk";
 
-import { Tabbar, List, Section, Cell, Input } from "@telegram-apps/telegram-ui";
+import {
+  Tabbar,
+  List,
+  Section,
+  Cell,
+  Input,
+  Placeholder,
+  Button,
+} from "@telegram-apps/telegram-ui";
 import "@telegram-apps/telegram-ui/dist/styles.css";
 
 import Icons, { Icon } from "./componets/icon";
@@ -13,6 +21,7 @@ export default function App() {
   //const [count, setCount] = useState(0);
   const [page, setpage] = useState("1");
   const [miniApp] = initMiniApp();
+  const [userfriends] = useState([]);
 
   //const initData = initInitData();
 
@@ -37,27 +46,25 @@ export default function App() {
   return (
     <List>
       {page == "1" ? (
-        <Section header="Друзья">
-          <Cell
-            onClick={() => {
-              console.log(123);
-            }}
-            interactiveAnimation={"opacity"}
+        userfriends.length > 0 ? (
+          <Section header="Друзья">
+            {userfriends.map(() => (
+              <Cell interactiveAnimation={"opacity"}>Friends</Cell>
+            ))}
+          </Section>
+        ) : (
+          <Placeholder
+            action={
+              <Button onClick={() => setpage("2")} size="l" stretched>
+                Поиск друзей
+              </Button>
+            }
+            description="Для исправления такой плачевной ситуации перейдите в раздел поиска друзей"
+            header="У вас нет друзей!"
           >
-            Friends
-          </Cell>
-          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
-          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
-          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
-          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
-          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
-          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
-          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
-          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
-          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
-          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
-          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
-        </Section>
+            <img alt="Telegram sticker" src="https://xelene.me/telegram.gif" />
+          </Placeholder>
+        )
       ) : page == "2" ? (
         <Section footer="Тут типа поиск друзей" header="Поиск друзей">
           <Input
