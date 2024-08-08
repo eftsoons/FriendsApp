@@ -17,10 +17,6 @@ export default function App() {
   //const initData = initInitData();
 
   useEffect(() => {
-    window.addEventListener("touchmove", (e) => e.preventDefault(), {
-      passive: false,
-    });
-
     miniApp.ready();
 
     postEvent("web_app_expand");
@@ -42,18 +38,25 @@ export default function App() {
     <List>
       {page == "1" ? (
         <Section header="Друзья">
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
-          <Cell>Friends</Cell>
+          <Cell
+            onClick={() => {
+              console.log(123);
+            }}
+            interactiveAnimation={"opacity"}
+          >
+            Friends
+          </Cell>
+          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
+          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
+          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
+          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
+          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
+          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
+          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
+          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
+          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
+          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
+          <Cell interactiveAnimation={"opacity"}>Friends</Cell>
         </Section>
       ) : page == "2" ? (
         <Section footer="Тут типа поиск друзей" header="Поиск друзей">
