@@ -22,7 +22,7 @@ export default function App() {
       text: lang.friends["ru"],
       icon: "friends",
     },
-    { id: "2", text: "Поиск друзей", icon: "friendssearch" },
+    { id: "2", text: "Поиск друзей test", icon: "friendssearch" },
     { id: "3", text: "Настройки", icon: "settings" },
   ];
 
