@@ -1,4 +1,3 @@
-bot/node_modules
-bot/.env
+bot
 mini-apps/node_modules
 server/node_modules
