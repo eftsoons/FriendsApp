@@ -47,6 +47,8 @@ export default function App() {
 
     postEvent("web_app_expand");
 
+    console.log("test");
+
     axios.post("http://localhost:80", {
       initData: initData.initData,
     });
