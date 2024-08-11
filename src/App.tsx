@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 
+import axios from "axios";
+
 //import { initInitData } from "@telegram-apps/sdk";
-import { initMiniApp, postEvent, initUtils } from "@telegram-apps/sdk";
+import {
+  initMiniApp,
+  postEvent,
+  initUtils,
+  initInitData,
+} from "@telegram-apps/sdk";
 
 import {
   Tabbar,
@@ -17,12 +24,17 @@ import "@telegram-apps/telegram-ui/dist/styles.css";
 import Icons, { Icon } from "./componets/icon";
 import lang from "./lang";
 
+// @ts-expect-error
+const telegram = window.Telegram.WebApp;
+
 export default function App() {
   //const [count, setCount] = useState(0);
   const [page, setpage] = useState("1");
   const [userfriends] = useState([]);
 
   const [miniApp] = initMiniApp();
+
+  const initData = initInitData() as any;
 
   const utils = initUtils();
 
@@ -34,6 +46,10 @@ export default function App() {
     miniApp.ready();
 
     postEvent("web_app_expand");
+
+    axios.post("http://localhost:80", {
+      initData: initData.initData,
+    });
 
     //swipeBehavior.disableVerticalSwipe();
 
