@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 
+import axios from "axios";
+
 //import { initInitData } from "@telegram-apps/sdk";
-import { initMiniApp, postEvent } from "@telegram-apps/sdk";
+import {
+  initMiniApp,
+  postEvent,
+  initUtils,
+  initInitData,
+} from "@telegram-apps/sdk";
 
 import {
   Tabbar,
@@ -17,11 +24,19 @@ import "@telegram-apps/telegram-ui/dist/styles.css";
 import Icons, { Icon } from "./componets/icon";
 import lang from "./lang";
 
+// @ts-expect-error
+const telegram = window.Telegram.WebApp;
+
 export default function App() {
   //const [count, setCount] = useState(0);
   const [page, setpage] = useState("1");
-  const [miniApp] = initMiniApp();
   const [userfriends] = useState([]);
+
+  const [miniApp] = initMiniApp();
+
+  const utils = initUtils();
+
+  //const [swipeBehavior] = initSwipeBehavior();
 
   //const initData = initInitData();
 
@@ -29,6 +44,8 @@ export default function App() {
     miniApp.ready();
 
     postEvent("web_app_expand");
+
+    //swipeBehavior.disableVerticalSwipe();
 
     miniApp.setHeaderColor("secondary_bg_color");
   }, []);
@@ -68,10 +85,23 @@ export default function App() {
       ) : page == "2" ? (
         <Section footer="Тут типа поиск друзей" header="Поиск друзей">
           <Input
-            header="Input"
-            placeholder="I am usual input, just leave me alone"
+            onChange={(e) => {
+              console.log(e.target.value);
+            }}
+            placeholder="Поиск друзей"
           />
-          <Cell>Chat Settings</Cell>
+          <Cell
+            onClick={() => {
+              utils.openTelegramLink(
+                "/FriendsAppsBot?startattach=send-assetCurrency__&choose=users"
+              );
+            }}
+          >
+            Chat Settings
+          </Cell>
+          <Button href="https://t.me/share/url?url=t.me/botname/app?startapp=something&text=something">
+            asd
+          </Button>
         </Section>
       ) : (
         <Section>

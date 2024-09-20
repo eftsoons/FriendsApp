@@ -1,9 +1,8 @@
 import TelegramBot from "node-telegram-bot-api";
-import * as process from "process";
 
-const token = process.env.TELEGRAM_BOT_TOKEN!;
+const token = "2200037495:AAE_MOMQd7MzgRn8QCLVo7T2lo5Jfla43zc";
 
-const bot = new TelegramBot(token, { polling: true });
+const bot = new TelegramBot(token, { polling: true, testEnvironment: true });
 
 bot.on("message", (msg) => {
   const text = msg.text;

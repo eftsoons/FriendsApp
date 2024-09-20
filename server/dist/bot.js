@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const node_telegram_bot_api_1 = __importDefault(require("node-telegram-bot-api"));
-const token = "7353533228:AAFhHCX8XJxBzcq96jaRRiiOE3Cg-7mQOkk"; // ПОФИКСИТЬprocess.env.TELEGRAM_BOT_TOKEN!;
-const bot = new node_telegram_bot_api_1.default(token, { polling: true });
+const token = "2200037495:AAE_MOMQd7MzgRn8QCLVo7T2lo5Jfla43zc";
+const bot = new node_telegram_bot_api_1.default(token, { polling: true, testEnvironment: true });
 bot.on("message", (msg) => {
     const text = msg.text;
     const chatid = msg.chat.id;
@@ -24,4 +24,4 @@ bot.on("message", (msg) => {
         });
     }
 });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=bot.js.map
